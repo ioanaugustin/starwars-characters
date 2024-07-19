@@ -1,0 +1,54 @@
+<div class="character-detail">
+  <div class="character-detail__form">
+    <div class="spinner-container" *ngIf="starWarsService.loading$ | async">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!(starWarsService.loading$ | async)">
+      <form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+        <div class="character-detail__form-elements">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput id="name" formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Height</mat-label>
+            <input matInput id="height" formControlName="height">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Mass</mat-label>
+            <input matInput id="mass" formControlName="mass">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Hair Color</mat-label>
+            <input matInput id="hair_color" formControlName="hair_color">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Skin Color</mat-label>
+            <input matInput id="skin_color" formControlName="skin_color">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Eye Color</mat-label>
+            <input matInput id="eye_color" formControlName="eye_color">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Birth Year</mat-label>
+            <input matInput id="birth_year" formControlName="birth_year">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Gender</mat-label>
+            <input matInput id="gender" formControlName="gender">
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

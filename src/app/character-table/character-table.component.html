@@ -1,0 +1,53 @@
+<div class="characters">
+    <div class="characters__spinner-container" *ngIf="starWarsService.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <h4 class="characters__title">Star Wars Characters</h4>
+    <table [class.characters__table--hidden]="(starWarsService.loading$ | async)" mat-table [dataSource]="dataSource"
+        class="characters__table mat-elevation-z8">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let character"> <a [routerLink]="['/character', getIdFromUrl(character.url)]">{{
+                    character.name }}</a> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="height">
+            <th mat-header-cell *matHeaderCellDef> Height </th>
+            <td mat-cell *matCellDef="let character"> {{ character.height }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mass">
+            <th mat-header-cell *matHeaderCellDef> Mass </th>
+            <td mat-cell *matCellDef="let character"> {{ character.mass }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="hair_color">
+            <th mat-header-cell *matHeaderCellDef> Hair Color </th>
+            <td mat-cell *matCellDef="let character"> {{ character.hair_color }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="skin_color">
+            <th mat-header-cell *matHeaderCellDef> Skin Color </th>
+            <td mat-cell *matCellDef="let character"> {{ character.skin_color }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="eye_color">
+            <th mat-header-cell *matHeaderCellDef> Eye Color </th>
+            <td mat-cell *matCellDef="let character"> {{ character.eye_color }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="birth_year">
+            <th mat-header-cell *matHeaderCellDef> Birth Year </th>
+            <td mat-cell *matCellDef="let character"> {{ character.birth_year }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef> Gender </th>
+            <td mat-cell *matCellDef="let character"> {{ character.gender }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator class="mat-elevation-z8" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+</div>
